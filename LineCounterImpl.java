@@ -2,9 +2,12 @@ package listem;
 
 import java.io.File;
 import java.util.Map;
+import java.util.HashMap;
 
 public class LineCounterImpl extends Commands implements LineCounter {
-	
+  
+  private int count;
+  private Map<File, Integer> values;
 	/**
 	 * Count the number of lines in files whose names match a given pattern.
 	 * 
@@ -16,9 +19,20 @@ public class LineCounterImpl extends Commands implements LineCounter {
 	 */
 	public Map<File, Integer> countLines(File directory, String fileSelectionPattern, 
 			boolean recursive) {
+    values = new HashMap<File, Integer>();
+    traverse(directory, fileSelectionPattern, recursive);
+    return values;    
+    
+  }
 
-    return null;    
+  public void processLine(String line) {
+    this.count++;
 
+  }
+
+  public void appendList(File f) {
+    values.put(f, count);
+    this.count = 0;
   }
 	
 }

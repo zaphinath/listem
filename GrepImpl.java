@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class GrepImpl extends Commands implements Grep{
 
+  
+
   public GrepImpl() {
 
   }
@@ -26,5 +28,12 @@ public class GrepImpl extends Commands implements Grep{
     
     return null;
   }
+  
+  public void processLine(String line) {
 
+  }
+
+  public void appendList(File file) {
+
+  }
 }
