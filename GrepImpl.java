@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class GrepImpl extends Commands implements Grep{
 
@@ -37,7 +40,10 @@ public class GrepImpl extends Commands implements Grep{
   }
   
   public void processLine(String line) {
-    if (line.contains(sub)) {
+    Pattern p = Pattern.compile(sub);
+    Matcher m = p.matcher(line);
+    if (m.find()) {
+    //if (line.contains(sub)) {
       list.add(line);
     }
   }
