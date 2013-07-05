@@ -3,10 +3,14 @@ package listem;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class GrepImpl extends Commands implements Grep{
 
-  
+  private Map<File, List<String>> values;
+  private List<String> list;
+  private String sub;
 
   public GrepImpl() {
 
@@ -25,15 +29,27 @@ public class GrepImpl extends Commands implements Grep{
 	 */
 	public Map<File, List<String>> grep(File directory, String fileSelectionPattern, 
 			String substringSelectionPattern, boolean recursive) {
-    
-    return null;
+    this.sub = substringSelectionPattern;
+    values = new HashMap<File, List<String>>();      
+    traverse(directory, fileSelectionPattern, recursive);
+    //System.out.println(values.toString());
+    return values;
   }
   
   public void processLine(String line) {
-
+    if (line.contains(sub)) {
+      list.add(line);
+    }
   }
 
   public void appendList(File file) {
+    //System.out.println(file.toString() + " " + list.toString());
+    //System.out.println(list.toString());
+    values.put(file, this.list);
+    //list.clear();
+  }
 
+  public void makeList() {
+    list = new ArrayList<String>();
   }
 }

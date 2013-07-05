@@ -25,9 +25,7 @@ public abstract class Commands {
       for (File f : dirs) {
         String name = f.getName();
         if (name.matches(pattern)) {
-        //Pattern p = Pattern.compile(fsPattern);
-        //Matcher m = p.matcher(dir.toString().subSequence(0,dir.toString().length()));
-        //if (m.matches()) {
+          makeList();
           Scanner sc = new Scanner(f);
           while (sc.hasNextLine()) {
             String tmp = sc.nextLine();
@@ -53,4 +51,5 @@ public abstract class Commands {
 
   public abstract void appendList(File file);
 
+  public abstract void makeList();
 }

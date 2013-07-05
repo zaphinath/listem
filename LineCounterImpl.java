@@ -34,5 +34,8 @@ public class LineCounterImpl extends Commands implements LineCounter {
     values.put(f, count);
     this.count = 0;
   }
+  public void makeList() {
+
+  }
 	
 }
