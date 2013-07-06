@@ -23,20 +23,21 @@ public abstract class Commands {
     try {
       File[] dirs = file.listFiles();
       for (File f : dirs) {
-        String name = f.getName();
-        if (name.matches(pattern)) {
-          makeList();
-          Scanner sc = new Scanner(f);
-          while (sc.hasNextLine()) {
-            String tmp = sc.nextLine();
-            processLine(tmp);
-            //dirs = this.dir.listFiles();
-            //System.out.println(dirs);
+        if (f.isFile()) {
+          String name = f.getName();
+          if (name.matches(pattern)) {
+            makeList();
+            Scanner sc = new Scanner(f);
+            while (sc.hasNextLine()) {
+              String tmp = sc.nextLine();
+              processLine(tmp);
+              //dirs = this.dir.listFiles();
+              //System.out.println(dirs);
+            }
+            appendList(f);
+            sc.close();
           }
-          appendList(f);
-          sc.close();
-        }
-        if (recursive == true) {
+        } else if (recursive == true) {
           if (f.isDirectory()) {
             traverse(f, pattern, recursive);
           }

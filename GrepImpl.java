@@ -49,9 +49,8 @@ public class GrepImpl extends Commands implements Grep{
   }
 
   public void appendList(File file) {
-    //System.out.println(file.toString() + " " + list.toString());
-    //System.out.println(list.toString());
-    values.put(file, this.list);
+    if (this.list.size() > 0)
+      values.put(file, this.list);
     //list.clear();
   }
 
