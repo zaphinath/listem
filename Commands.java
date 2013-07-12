@@ -31,8 +31,6 @@ public abstract class Commands {
             while (sc.hasNextLine()) {
               String tmp = sc.nextLine();
               processLine(tmp);
-              //dirs = this.dir.listFiles();
-              //System.out.println(dirs);
             }
             appendList(f);
             sc.close();
